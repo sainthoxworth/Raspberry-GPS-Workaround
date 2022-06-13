@@ -63,10 +63,10 @@ def getPositionData(gps):
         pulse_end = time.time()
 
     while GPIO.input(ECHO1) == 0:
-        pulse_start = time.time()
+        pulse_start1 = time.time()
 
     while GPIO.input(ECHO1) == 1:
-        pulse_end = time.time()
+        pulse_end1 = time.time()
  
     pulse_duration = pulse_end - pulse_start
 

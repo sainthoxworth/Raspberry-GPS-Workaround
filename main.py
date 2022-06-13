@@ -15,16 +15,10 @@ GPIO.setmode(GPIO.BCM)
 TRIG = 23
 ECHO = 24
 
-TRIG1 = 20
-ECHO1 = 21
-
 print ("Distance Measurement in progress...")
 
 GPIO.setup(TRIG, GPIO.OUT)
 GPIO.setup(ECHO, GPIO.IN)
-
-GPIO.setup(TRIG1, GPIO.OUT)
-GPIO.setup(ECHO1, GPIO.IN)
 
 ref = db.reference("/")
 
@@ -39,21 +33,11 @@ def getPositionData(gps):
     print("Waiting For Sensor 1")
     time.sleep(2)
     
-    nx = next(gpsd)
-    GPIO.output(TRIG1, False)
-
-    print("Waiting For Sensor 2")
-    time.sleep(2)
 
     GPIO.output(TRIG, True)
     time.sleep(0.00001)
 
     GPIO.output(TRIG, False)
-    
-    GPIO.output(TRIG1, True)
-    time.sleep(0.00001)
-
-    GPIO.output(TRIG1, False)
     
 
     while GPIO.input(ECHO) == 0:
@@ -61,25 +45,41 @@ def getPositionData(gps):
 
     while GPIO.input(ECHO) == 1:
         pulse_end = time.time()
-
-    while GPIO.input(ECHO1) == 0:
-        pulse_start1 = time.time()
-
-    while GPIO.input(ECHO1) == 1:
-        pulse_end1 = time.time()
  
     pulse_duration = pulse_end - pulse_start
 
     distance = pulse_duration * 17150
     distance = round(distance, 2)
     
-    pulse_duration1 = pulse_end1 - pulse_start1
+    GPIO.setmode(GPIO.BCM)
+    TRIG1 = 20
+    ECHO1 = 21
+
+    GPIO.setup(TRIG1, GPIO.OUT)
+    GPIO.setup(ECHO1, GPIO.IN)
+
+    GPIO.output(TRIG1, False)
+
+    print("Waiting For Sensor 2")
+    time.sleep(2)
+
+    GPIO.output(TRIG1, True)
+    time.sleep(0.00001)
+
+    GPIO.output(TRIG1, False)
+	
+	while GPIO.input(ECHO1) == 0:
+        pulse_start1 = time.time()
+
+    while GPIO.input(ECHO1) == 1:
+        pulse_end1 = time.time()
+
+	pulse_duration1 = pulse_end1 - pulse_start1
 
     distance1 = pulse_duration1 * 17150
     distance1 = round(distance1, 2)
     
     print (distance1)
-    
 
     if nx['class'] == 'TPV':
         now = datetime.now()

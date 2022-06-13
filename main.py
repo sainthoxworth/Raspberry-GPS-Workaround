@@ -68,7 +68,7 @@ def getPositionData(gps):
 
     GPIO.output(TRIG1, False)
 	
-	while GPIO.input(ECHO1) == 0:
+    while GPIO.input(ECHO1) == 0:
         pulse_start1 = time.time()
 
     while GPIO.input(ECHO1) == 1:

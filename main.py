@@ -94,7 +94,8 @@ def getPositionData(gps):
                 'longitude': longitude,
                 'speed': speed,
                 'time': current_time,
-                'distance': distance
+                'distance': distance,
+                'distance1': distance1
         })
         print(("Konumunuz: lon = " + str(longitude) + ", lat = " + str(latitude)
                + "Zaman: " + str(current_time)

@@ -74,7 +74,7 @@ def getPositionData(gps):
     while GPIO.input(ECHO1) == 1:
         pulse_end1 = time.time()
 
-	pulse_duration1 = pulse_end1 - pulse_start1
+    pulse_duration1 = pulse_end1 - pulse_start1
 
     distance1 = pulse_duration1 * 17150
     distance1 = round(distance1, 2)

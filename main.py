@@ -79,7 +79,11 @@ def getPositionData(gps):
     distance1 = pulse_duration1 * 17150
     distance1 = round(distance1, 2)
     
-    print (distance1)
+    rightWarning = distance1 > 10 
+    leftWarning = distance > 10
+    
+    ## distance1 is right, distance is left
+    
 
     if nx['class'] == 'TPV':
         now = datetime.now()
@@ -94,8 +98,8 @@ def getPositionData(gps):
                 'longitude': longitude,
                 'speed': speed,
                 'time': current_time,
-                'distance': distance,
-                'distance1': distance1
+                'leftDistance': leftWarning,
+                'rightDistance': rightWarning
         })
         print(("Konumunuz: lon = " + str(longitude) + ", lat = " + str(latitude)
                + "Zaman: " + str(current_time)

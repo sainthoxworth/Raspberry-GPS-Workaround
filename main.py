@@ -22,7 +22,7 @@ GPIO.setup(ECHO, GPIO.IN)
 
 ref = db.reference("/")
 
-rasp_key = ref.child('raspberry')
+rasp_key = ref.child('users')
 
 running = True
 
@@ -94,14 +94,14 @@ def getPositionData(gps):
         speed = getattr(nx, 'speed', "Unknown")
         rasp_key.update(
             {
-                'latitude': latitude,
-                'longitude': longitude,
-                'speed': speed,
-                'time': current_time,
-                'leftDistance': distance,
-                'rightDistance': distance1,
-                'leftWarning': leftWarning,
-                'rightWarning': rightWarning,
+                'latitude': str(latitude),
+                'longitude': str(longitude),
+                'gpsSpeed': str(speed),
+                'time': str(current_time),
+                'leftDistance': str(distance),
+                'rightDistance': str(distance1),
+                'leftWarning': str(leftWarning),
+                'rightWarning': str(rightWarning),
                 
         })
         print(("Konumunuz: lon = " + str(longitude) + ", lat = " + str(latitude)

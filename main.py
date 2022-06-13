@@ -36,7 +36,13 @@ def getPositionData(gps):
     nx = next(gpsd)
     GPIO.output(TRIG, False)
 
-    print("Waiting For Sensor")
+    print("Waiting For Sensor 1")
+    time.sleep(2)
+    
+    nx = next(gpsd)
+    GPIO.output(TRIG1, False)
+
+    print("Waiting For Sensor 2")
     time.sleep(2)
 
     GPIO.output(TRIG, True)
@@ -48,24 +54,20 @@ def getPositionData(gps):
     time.sleep(0.00001)
 
     GPIO.output(TRIG1, False)
+    
 
     while GPIO.input(ECHO) == 0:
         pulse_start = time.time()
-        print('bruh1')
 
     while GPIO.input(ECHO) == 1:
         pulse_end = time.time()
-        print('bruh2')
-        
+
     while GPIO.input(ECHO1) == 0:
-        pulse_start1 = time.time()
-        print('bruh3')
-        
+        pulse_start = time.time()
 
     while GPIO.input(ECHO1) == 1:
-        pulse_end1 = time.time()
-        print('bruh4')
-
+        pulse_end = time.time()
+ 
     pulse_duration = pulse_end - pulse_start
 
     distance = pulse_duration * 17150
@@ -77,6 +79,7 @@ def getPositionData(gps):
     distance1 = round(distance1, 2)
     
     print (distance1)
+    
 
     if nx['class'] == 'TPV':
         now = datetime.now()

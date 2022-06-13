@@ -51,15 +51,20 @@ def getPositionData(gps):
 
     while GPIO.input(ECHO) == 0:
         pulse_start = time.time()
+        print('bruh1')
 
     while GPIO.input(ECHO) == 1:
         pulse_end = time.time()
+        print('bruh2')
         
     while GPIO.input(ECHO1) == 0:
         pulse_start1 = time.time()
+        print('bruh3')
+        
 
     while GPIO.input(ECHO1) == 1:
         pulse_end1 = time.time()
+        print('bruh4')
 
     pulse_duration = pulse_end - pulse_start
 

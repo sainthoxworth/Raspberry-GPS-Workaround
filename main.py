@@ -15,7 +15,7 @@ GPIO.setmode(GPIO.BCM)
 TRIG = 23
 ECHO = 24
 
-print ("Distance Measurement in progress...")
+print ("Mesafe olculuyor...")
 
 GPIO.setup(TRIG, GPIO.OUT)
 GPIO.setup(ECHO, GPIO.IN)
@@ -30,7 +30,7 @@ def getPositionData(gps):
     nx = next(gpsd)
     GPIO.output(TRIG, False)
 
-    print("Waiting For Sensor 1")
+    print("Sensor 1 bekleniyor...")
     time.sleep(2)
     
 
@@ -60,7 +60,7 @@ def getPositionData(gps):
 
     GPIO.output(TRIG1, False)
 
-    print("Waiting For Sensor 2")
+    print("Sensor 2 bekleniyor...")
     time.sleep(2)
 
     GPIO.output(TRIG1, True)
@@ -86,12 +86,12 @@ def getPositionData(gps):
     
 
     if nx['class'] == 'TPV':
-        now = datetime.now()
+        now = datetime.datetime.now()
         current_time = now.strftime("%H:%M:%S")
-        latitude = getattr(nx, 'lat', "Unknown")
+        latitude = getattr(nx, 'lat', "Bilinmeyen veri")
         # $GPRMC,123519,A, 4807.038,N, 01131.000,E, 022.4, 084.4,230394,003.1,W*6A
-        longitude = getattr(nx, 'lon', "Unknown")
-        speed = getattr(nx, 'speed', "Unknown")
+        longitude = getattr(nx, 'lon', "Bilinmeyen veri")
+        speed = getattr(nx, 'speed', "Bilinmeyen veri")
         rasp_key.update(
             {
                 'latitude': str(latitude),

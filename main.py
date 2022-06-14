@@ -79,8 +79,8 @@ def getPositionData(gps):
     distance1 = pulse_duration1 * 17150
     distance1 = round(distance1, 2)
     
-    rightWarning = distance1 > 10 
-    leftWarning = distance > 10
+    rightWarning = distance1 < 10 
+    leftWarning = distance < 10
     
     ## distance1 is right, distance is left
     

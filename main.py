@@ -87,7 +87,7 @@ def getPositionData(gps):
 
     if nx['class'] == 'TPV':
         now = datetime.now()
-        current_time = now.strftime("%d/%m/%Y %H:%M:%S")
+        current_time = now.strftime("%Y-%m-%d %H:%M:%S")
         latitude = getattr(nx, 'lat', "Bilinmeyen veri")
         # $GPRMC,123519,A, 4807.038,N, 01131.000,E, 022.4, 084.4,230394,003.1,W*6A
         longitude = getattr(nx, 'lon', "Bilinmeyen veri")

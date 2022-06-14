@@ -6,7 +6,7 @@ from datetime import datetime
 import RPi.GPIO as GPIO
 import time
 import cv2
-import  pyshine
+import pyshine
 
 HTML="""
 <html>

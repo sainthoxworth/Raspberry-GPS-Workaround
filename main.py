@@ -144,11 +144,11 @@ def getPositionData(gps):
                 
         })
         print(("Konumunuz: lon = " + str(longitude) + ", lat = " + str(latitude)
-               + "Zaman: " + str(current_time)
-               + "Hız: " + str(speed))
-               + "Sol Uzaklık: " + str(distance)
-               + "Sağ Uzaklık: " + str(distance1)
-               + "Ön Uzaklık: " + str(distance2))
+               + ", Zaman: " + str(current_time)
+               + ", Hız: " + str(speed))
+               + ", Sol Uzaklık: " + str(distance)
+               + ", Sağ Uzaklık: " + str(distance1)
+               + ", Ön Uzaklık: " + str(distance2))
 
 
 gpsd = gps(mode = WATCH_ENABLE | WATCH_NEWSTYLE)

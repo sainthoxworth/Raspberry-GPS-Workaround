@@ -27,6 +27,7 @@ rasp_key = ref.child('users/TX3SudStPQSDPViRvZ9kaOlmw4H2')
 running = True
 
 def getPositionData(gps):
+    GPIO.setwarnings(False)
     nx = next(gpsd)
     GPIO.output(TRIG, False)
 
@@ -111,7 +112,7 @@ def getPositionData(gps):
     distance2 = pulse_duration2 * 17150
     distance2 = round(distance2, 2)
     
-    GPIO.setwarnings(False)
+    
     
     ######################### SENSÖRLERİN BOOLEAN UYARI DEĞERLERİ ############################
 

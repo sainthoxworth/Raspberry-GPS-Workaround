@@ -112,9 +112,6 @@ def getPositionData(gps):
     distance2 = pulse_duration2 * 17150
     distance2 = round(distance2, 2)
     
-    #### metreye çevirme ####
-    
-    frontDistanceMeter = distance2 / 100
     
     ######################### SENSÖRLERİN BOOLEAN UYARI DEĞERLERİ ############################
 
@@ -140,7 +137,7 @@ def getPositionData(gps):
                 'time': str(current_time),
                 'leftDistance': str(distance),
                 'rightDistance': str(distance1),
-                'frontDistance': str(frontDistanceMeter),
+                'frontDistance': str(distance2),
                 'leftWarning': str(leftWarning),
                 'rightWarning': str(rightWarning),
                 'frontWarning': str(frontWarning)

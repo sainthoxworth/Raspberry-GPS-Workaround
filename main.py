@@ -111,6 +111,8 @@ def getPositionData(gps):
     distance2 = pulse_duration2 * 17150
     distance2 = round(distance2, 2)
     
+    GPIO.setwarnings(False)
+    
     ######################### SENSÖRLERİN BOOLEAN UYARI DEĞERLERİ ############################
 
     frontWarning = distance2 < 10
@@ -135,6 +137,7 @@ def getPositionData(gps):
                 'time': str(current_time),
                 'leftDistance': str(distance),
                 'rightDistance': str(distance1),
+                'frontDistance': str(distance2),
                 'leftWarning': str(leftWarning),
                 'rightWarning': str(rightWarning),
                 'frontWarning': str(frontWarning)

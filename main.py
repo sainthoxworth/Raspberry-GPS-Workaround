@@ -51,6 +51,8 @@ def getPositionData(gps):
     distance = pulse_duration * 17150
     distance = round(distance, 2)
     
+    ######################### SAĞ SENSÖR ############################
+    
     GPIO.setmode(GPIO.BCM)
     TRIG1 = 20
     ECHO1 = 21
@@ -79,10 +81,43 @@ def getPositionData(gps):
     distance1 = pulse_duration1 * 17150
     distance1 = round(distance1, 2)
     
+    ######################### ÖN SENSÖR ############################
+    
+    GPIO.setmode(GPIO.BCM)
+    TRIG2 = 8
+    ECHO2 = 7
+
+    GPIO.setup(TRIG2, GPIO.OUT)
+    GPIO.setup(ECHO2, GPIO.IN)
+
+    GPIO.output(TRIG2, False)
+
+    print("Sensor 3 bekleniyor...")
+    time.sleep(2)
+
+    GPIO.output(TRIG2, True)
+    time.sleep(0.00001)
+
+    GPIO.output(TRIG2, False)
+	
+    while GPIO.input(ECHO2) == 0:
+        pulse_start2 = time.time()
+
+    while GPIO.input(ECHO2) == 1:
+        pulse_end2 = time.time()
+
+    pulse_duration2 = pulse_end2 - pulse_start2
+
+    distance2 = pulse_duration2 * 17150
+    distance2 = round(distance2, 2)
+    
+    ######################### SENSÖRLERİN BOOLEAN UYARI DEĞERLERİ ############################
+
+    frontWarning = distance2 < 10
     rightWarning = distance1 < 10 
     leftWarning = distance < 10
     
-    ## distance1 is right, distance is left
+    ## distance 2 is front, distance1 is right, distance is left
     
 
     if nx['class'] == 'TPV':
@@ -102,6 +137,7 @@ def getPositionData(gps):
                 'rightDistance': str(distance1),
                 'leftWarning': str(leftWarning),
                 'rightWarning': str(rightWarning),
+                'frontWarning': str(frontWarning)
                 
         })
         print(("Konumunuz: lon = " + str(longitude) + ", lat = " + str(latitude)

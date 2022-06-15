@@ -147,7 +147,7 @@ def getPositionData(gps):
                + "Zaman: " + str(current_time)
                + "Hız: " + str(speed))
                + "Sol Uzaklık: " + str(distance))
-               + "Sağ Uzaklık: " + str(distance1))
+               + "Sag Uzaklık: " + str(distance1))
                + "Ön Uzaklık: " + str(distance2))
 
 
